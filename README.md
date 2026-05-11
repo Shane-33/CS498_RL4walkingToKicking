@@ -19,30 +19,25 @@ This project investigates reinforcement learning for humanoid walking and soccer
 
 ## Repository Structure
 
-```text
-.
-├── Doc&Slide/
-│   └── CS498_Team2_Final_Report.pdf
-├── Doc&Slide/
-│   ├── CS498_Team2_Final_Report.pdf
-│   └── robotics_final_presentation_k1_kicking.pptx
-├── code/
-│   ├── isaac_lab/
-│   └── mujoco/
-├── videos/
-│   ├── isaac_sim/
-│   ├── mujoco/
-│   └── original_rollout_videos/
-├── Screenshots/
-├── final_report_assets/
-│   ├── figures/
-│   ├── logs/
-│   ├── tables/
-│   ├── k1_fullbody_walk_env_cfg.py
-│   └── k1_fullbody_walk_agent_cfg.py
-├── mujoco_simulation/
-└── individual_contribution_reports/
-```
+- `Doc&Slide/`
+  - `CS498_Team2_Final_Report.pdf`
+  - `robotics_final_presentation_k1_kicking.pptx`
+- `code/`
+  - `isaac_lab/`
+  - `mujoco/`
+- `videos/`
+  - `isaac_sim/`
+  - `mujoco/`
+  - original rollout videos
+- `Screenshots/`
+- `final_report_assets/`
+  - `figures/`
+  - `logs/`
+  - `tables/`
+  - `k1_fullbody_walk_env_cfg.py`
+  - `k1_fullbody_walk_agent_cfg.py`
+- `mujoco_simulation/`
+- `individual_contribution_reports/`
 
 ## Report and Slides
 
@@ -68,7 +63,9 @@ The `code/mujoco/` folder is reserved for MuJoCo scripts/configurations if inclu
 ## Team Member Contributions
 
 - **Shanshan Zhu:** Designed RL environments, implemented PPO training pipelines, performed reward engineering, conducted training and debugging experiments for both walking and kicking policies, generated evaluation figures, and wrote/organized the report and final submission assets.
+
 - **Aaditya Voruganti:** Contributed to humanoid walking policy development, simulator setup, locomotion evaluation, and experiment analysis.
+
 - **Prithvi Teekaa Murali:** Contributed to kicking-policy development, interaction testing, presentation preparation, and project documentation.
 
 ## Notes
