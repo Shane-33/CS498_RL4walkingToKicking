@@ -23,7 +23,9 @@ This project investigates reinforcement learning for humanoid walking and soccer
 .
 ├── Doc&Slide/
 │   └── CS498_Team2_Final_Report.pdf
-├── robotics_final_presentation_k1_kicking.pptx
+├── Doc&Slide/
+│   ├── CS498_Team2_Final_Report.pdf
+│   └── robotics_final_presentation_k1_kicking.pptx
 ├── code/
 │   ├── isaac_lab/
 │   └── mujoco/
@@ -45,7 +47,7 @@ This project investigates reinforcement learning for humanoid walking and soccer
 ## Report and Slides
 
 - `Doc&Slide/CS498_Team2_Final_Report.pdf`
-- `robotics_final_presentation_k1_kicking.pptx`
+- `Doc&Slide/robotics_final_presentation_k1_kicking.pptx`
 
 ## Videos
 
