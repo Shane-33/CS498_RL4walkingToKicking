@@ -1,0 +1,59 @@
+Could not override 'experiment_name'.
+To append to your config use +experiment_name=k1_fullbody_walk_larger_stride_v1
+Key 'experiment_name' is not in struct
+    full_key: experiment_name
+    object_type=dict
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/team2/IsaacLab/apps/isaaclab.python.headless.kit
+BOOSTER_K1_CFG.actuators={'legs': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*_Hip_Pitch', '.*_Hip_Roll', '.*_Hip_Yaw', '.*_Knee_Pitch'], effort_limit=None, velocity_limit=None, effort_limit_sim={'.*_Hip_Pitch': 30.0, '.*_Hip_Roll': 35.0, '.*_Hip_Yaw': 20.0, '.*_Knee_Pitch': 40.0}, velocity_limit_sim={'.*_Hip_Pitch': 8.0, '.*_Hip_Roll': 12.9, '.*_Hip_Yaw': 18.0, '.*_Knee_Pitch': 12.5}, stiffness={'.*_Hip_Pitch': 80.0, '.*_Hip_Roll': 80.0, '.*_Hip_Yaw': 80.0, '.*_Knee_Pitch': 80.0}, damping={'.*_Hip_Pitch': 2.0, '.*_Hip_Roll': 2.0, '.*_Hip_Yaw': 2.0, '.*_Knee_Pitch': 2.0}, armature={'.*_Hip_Pitch': 0.0478125, '.*_Hip_Roll': 0.0339552, '.*_Hip_Yaw': 0.0282528, '.*_Knee_Pitch': 0.095625}, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8), 'feet': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*_Ankle_Pitch', '.*_Ankle_Roll'], effort_limit=None, velocity_limit=None, effort_limit_sim=20.0, velocity_limit_sim=18.0, stiffness=30, damping=2.0, armature=0.0565056, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8), 'arms': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*_Shoulder_Pitch', '.*_Shoulder_Roll', '.*_Elbow_Pitch', '.*_Elbow_Yaw'], effort_limit=None, velocity_limit=None, effort_limit_sim={'.*_Shoulder_Pitch': 14.0, '.*_Shoulder_Roll': 14.0, '.*_Elbow_Pitch': 14.0, '.*_Elbow_Yaw': 14.0}, velocity_limit_sim={'.*_Shoulder_Pitch': 18.0, '.*_Shoulder_Roll': 18.0, '.*_Elbow_Pitch': 18.0, '.*_Elbow_Yaw': 18.0}, stiffness={'.*_Shoulder_Pitch': 4.0, '.*_Shoulder_Roll': 4.0, '.*_Elbow_Pitch': 4.0, '.*_Elbow_Yaw': 4.0}, damping={'.*_Shoulder_Pitch': 1.0, '.*_Shoulder_Roll': 1.0, '.*_Elbow_Pitch': 1.0, '.*_Elbow_Yaw': 1.0}, armature={'.*_Shoulder_Pitch': 0.001, '.*_Shoulder_Roll': 0.001, '.*_Elbow_Pitch': 0.001, '.*_Elbow_Yaw': 0.001}, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8), 'head': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*Head.*'], effort_limit=None, velocity_limit=None, effort_limit_sim=6.0, velocity_limit_sim=20.0, stiffness=4.0, damping=1.0, armature=0.001, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8)}
+K1_ACTION_SCALE={'.*_Hip_Pitch': 0.09375, '.*_Hip_Roll': 0.109375, '.*_Hip_Yaw': 0.0625, '.*_Knee_Pitch': 0.125, '.*_Ankle_Pitch': 0.16666666666666666, '.*_Ankle_Roll': 0.16666666666666666, '.*_Shoulder_Pitch': 0.875, '.*_Shoulder_Roll': 0.875, '.*_Elbow_Pitch': 0.875, '.*_Elbow_Yaw': 0.875, '.*Head.*': 0.375}
+[INFO]: Parsing configuration from: booster_train.tasks.k1_fullbody_walk_isaaclab.tasks.locomotion.k1_fullbody_walk.k1_fullbody_walk_env_cfg:K1FullBodyWalkEnvCfg
+[INFO]: Parsing configuration from: booster_train.tasks.k1_fullbody_walk_isaaclab.tasks.locomotion.k1_fullbody_walk.k1_fullbody_walk_agent_cfg:K1FullBodyWalkPPORunnerCfg
+Loading user config located at: '/home/team2/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/team2/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260505_153646.log
+2026-05-05T20:36:46Z [53ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-05-05T20:36:46Z [227ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-05-05T20:36:47Z [353ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-05-05T20:36:47Z [358ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-05-05T20:36:49Z [3,033ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-05-05T20:36:49Z [3,033ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24564   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 85dee919.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | Intel(R) Graphics (RPL-S)        |        |     | 48050   MB | 8086      | 0          |
+|     |                                  |        |     |            | a780      | 868080a7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-90-generic
+| Processor: 13th Gen Intel(R) Core(TM) i9-13900K
+| Bare Metal Cores: 24 | Bare Metal Logical Cores: 48
+| Available Cores:  32 
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 64067 | Free Memory: 23560
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+2026-05-05T20:36:49Z [3,247ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+2026-05-05T20:36:49Z [3,247ms] [Warning] [gpu.foundation.plugin] Detected IOMMU is enabled. Running CUDA peer-to-peer bandwidth and latency validation.
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 920.34 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.39 
+
+   CPU     0 
+     0   1.22 
+2026-05-05T20:36:49Z [3,291ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+2026-05-05T20:36:51Z [4,539ms] [Warning] [omni.physx.plugin] USD stage detach not called, holding a loose ptr to a stage!
+2026-05-05T20:36:51Z [4,652ms] [Warning] [carb] Recursive unloadAllPlugins() detected!

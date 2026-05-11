@@ -1,0 +1,7 @@
+nohup: ignoring input
+bash: /home/team2/miniconda3/envs/env_isaacgym/lib/libtinfo.so.6: no version information available (required by bash)
+[3gH    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H    H   [INFO] Using python from: /home/team2/miniconda3/envs/env_isaacgym/bin/python
+Traceback (most recent call last):
+  File "scripts/reinforcement_learning/rsl_rl/train.py", line 13, in <module>
+    from isaaclab.app import AppLauncher
+ModuleNotFoundError: No module named 'isaaclab'

@@ -1,0 +1,1836 @@
+[INFO][AppLauncher]: Using device: cuda:0
+[INFO][AppLauncher]: Loading experience file: /home/team2/IsaacLab/apps/isaaclab.python.headless.kit
+BOOSTER_K1_CFG.actuators={'legs': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*_Hip_Pitch', '.*_Hip_Roll', '.*_Hip_Yaw', '.*_Knee_Pitch'], effort_limit=None, velocity_limit=None, effort_limit_sim={'.*_Hip_Pitch': 30.0, '.*_Hip_Roll': 35.0, '.*_Hip_Yaw': 20.0, '.*_Knee_Pitch': 40.0}, velocity_limit_sim={'.*_Hip_Pitch': 8.0, '.*_Hip_Roll': 12.9, '.*_Hip_Yaw': 18.0, '.*_Knee_Pitch': 12.5}, stiffness={'.*_Hip_Pitch': 80.0, '.*_Hip_Roll': 80.0, '.*_Hip_Yaw': 80.0, '.*_Knee_Pitch': 80.0}, damping={'.*_Hip_Pitch': 2.0, '.*_Hip_Roll': 2.0, '.*_Hip_Yaw': 2.0, '.*_Knee_Pitch': 2.0}, armature={'.*_Hip_Pitch': 0.0478125, '.*_Hip_Roll': 0.0339552, '.*_Hip_Yaw': 0.0282528, '.*_Knee_Pitch': 0.095625}, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8), 'feet': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*_Ankle_Pitch', '.*_Ankle_Roll'], effort_limit=None, velocity_limit=None, effort_limit_sim=20.0, velocity_limit_sim=18.0, stiffness=30, damping=2.0, armature=0.0565056, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8), 'arms': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*_Shoulder_Pitch', '.*_Shoulder_Roll', '.*_Elbow_Pitch', '.*_Elbow_Yaw'], effort_limit=None, velocity_limit=None, effort_limit_sim={'.*_Shoulder_Pitch': 14.0, '.*_Shoulder_Roll': 14.0, '.*_Elbow_Pitch': 14.0, '.*_Elbow_Yaw': 14.0}, velocity_limit_sim={'.*_Shoulder_Pitch': 18.0, '.*_Shoulder_Roll': 18.0, '.*_Elbow_Pitch': 18.0, '.*_Elbow_Yaw': 18.0}, stiffness={'.*_Shoulder_Pitch': 4.0, '.*_Shoulder_Roll': 4.0, '.*_Elbow_Pitch': 4.0, '.*_Elbow_Yaw': 4.0}, damping={'.*_Shoulder_Pitch': 1.0, '.*_Shoulder_Roll': 1.0, '.*_Elbow_Pitch': 1.0, '.*_Elbow_Yaw': 1.0}, armature={'.*_Shoulder_Pitch': 0.001, '.*_Shoulder_Roll': 0.001, '.*_Elbow_Pitch': 0.001, '.*_Elbow_Yaw': 0.001}, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8), 'head': DelayedImplicitActuatorCfg(class_type=<class 'booster_train.assets.robots.actuator.DelayedImplicitActuator'>, joint_names_expr=['.*Head.*'], effort_limit=None, velocity_limit=None, effort_limit_sim=6.0, velocity_limit_sim=20.0, stiffness=4.0, damping=1.0, armature=0.001, friction=None, dynamic_friction=None, viscous_friction=None, min_delay=2, max_delay=8)}
+K1_ACTION_SCALE={'.*_Hip_Pitch': 0.09375, '.*_Hip_Roll': 0.109375, '.*_Hip_Yaw': 0.0625, '.*_Knee_Pitch': 0.125, '.*_Ankle_Pitch': 0.16666666666666666, '.*_Ankle_Roll': 0.16666666666666666, '.*_Shoulder_Pitch': 0.875, '.*_Shoulder_Roll': 0.875, '.*_Elbow_Pitch': 0.875, '.*_Elbow_Yaw': 0.875, '.*Head.*': 0.375}
+[INFO]: Parsing configuration from: booster_train.tasks.k1_fullbody_walk_isaaclab.tasks.locomotion.k1_fullbody_walk.k1_fullbody_walk_env_cfg:K1FullBodyWalkEnvCfg
+[K1FullBodyWalk] arm action joints: ['ALeft_Shoulder_Pitch', 'Left_Shoulder_Roll', 'Left_Elbow_Pitch', 'Left_Elbow_Yaw', 'ARight_Shoulder_Pitch', 'Right_Shoulder_Roll', 'Right_Elbow_Pitch', 'Right_Elbow_Yaw']
+[K1FullBodyWalk] arm init-state joint_pos entries: {'Left_Shoulder_Roll': -1.3, 'Right_Shoulder_Roll': 1.3, 'ALeft_Shoulder_Pitch': 0.0, 'ARight_Shoulder_Pitch': 0.0, 'Left_Elbow_Pitch': 0.3, 'Right_Elbow_Pitch': 0.3, 'Left_Elbow_Yaw': 0.0, 'Right_Elbow_Yaw': 0.0}
+[K1FullBodyWalk] arm target pose: {'ALeft_Shoulder_Pitch': 0.0, 'ARight_Shoulder_Pitch': 0.0, 'Left_Shoulder_Roll': -1.3, 'Right_Shoulder_Roll': 1.3, 'Left_Elbow_Pitch': 0.3, 'Right_Elbow_Pitch': 0.3, 'Left_Elbow_Yaw': 0.0, 'Right_Elbow_Yaw': 0.0}
+[INFO]: Parsing configuration from: booster_train.tasks.k1_fullbody_walk_isaaclab.tasks.locomotion.k1_fullbody_walk.k1_fullbody_walk_agent_cfg:K1FullBodyWalkPPORunnerCfg
+[INFO] Logging experiment in directory: /home/team2/IsaacLab/logs/rsl_rl/k1_fullbody_walk_bigstep_stable_v3
+Exact experiment name requested from command line: 2026-05-05_16-43-45
+
+[36m======================================================================================[0m
+[36m[1m[INFO][IsaacLab]: Logging to file: /tmp/isaaclab/logs/isaaclab_2026-05-05_16-43-45.log[0m
+[36m======================================================================================[0m
+
+[33m16:43:45 [simulation_context.py] WARNING: The `enable_external_forces_every_iteration` parameter in the PhysxCfg is set to False. If you are experiencing noisy velocities, consider enabling this flag. You may need to slightly increase the number of velocity iterations (setting it to 1 or 2 rather than 0), together with this flag, to improve the accuracy of velocity updates.[0m
+Loading user config located at: '/home/team2/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/data/Kit/Isaac-Sim/5.1/user.config.json'
+[Info] [carb] Logging to file: /home/team2/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/isaacsim/kit/logs/Kit/Isaac-Sim/5.1/kit_20260505_164340.log
+2026-05-05T21:43:40Z [111ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-05-05T21:43:41Z [350ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+2026-05-05T21:43:41Z [496ms] [Warning] [carb] Acquiring non optional plugin interface which is not listed as dependency: [omni::physx::IPhysxBenchmarks v1.0] (plugin: <default plugin>), by client: omni.physics.physx.plugin. Add it to CARB_PLUGIN_IMPL_DEPS() macro of a client.
+2026-05-05T21:43:41Z [503ms] [Warning] [omni.isaac.dynamic_control] omni.isaac.dynamic_control is deprecated as of Isaac Sim 4.5. No action is needed from end-users.
+2026-05-05T21:43:43Z [2,928ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-05-05T21:43:43Z [2,928ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24564   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 85dee919.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | Intel(R) Graphics (RPL-S)        |        |     | 48050   MB | 8086      | 0          |
+|     |                                  |        |     |            | a780      | 868080a7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-90-generic
+| Processor: 13th Gen Intel(R) Core(TM) i9-13900K
+| Bare Metal Cores: 24 | Bare Metal Logical Cores: 48
+| Available Cores:  32 
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 64067 | Free Memory: 12140
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+2026-05-05T21:43:43Z [3,142ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+2026-05-05T21:43:43Z [3,142ms] [Warning] [gpu.foundation.plugin] Detected IOMMU is enabled. Running CUDA peer-to-peer bandwidth and latency validation.
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 924.95 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.39 
+
+   CPU     0 
+     0   1.18 
+2026-05-05T21:43:44Z [3,187ms] [Warning] [omni.kvdb.plugin] Disabling key-value database because another kit process is locking it
+2026-05-05T21:43:45Z [4,594ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-05-05T21:43:45Z [4,594ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-05-05T21:43:45Z [4,628ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+2026-05-05T21:43:45Z [4,629ms] [Warning] [gpu.foundation.plugin] Skipping unsupported non-NVIDIA GPU: Intel(R) Graphics (RPL-S)
+
+|---------------------------------------------------------------------------------------------|
+| Driver Version: 580.126.09    | Graphics API: Vulkan
+|=============================================================================================|
+| GPU | Name                             | Active | LDA | GPU Memory | Vendor-ID | LUID       |
+|     |                                  |        |     |            | Device-ID | UUID       |
+|     |                                  |        |     |            | Bus-ID    |            |
+|---------------------------------------------------------------------------------------------|
+| 0   | NVIDIA GeForce RTX 4090          | Yes: 0 |     | 24564   MB | 10de      | 0          |
+|     |                                  |        |     |            | 2684      | 85dee919.. |
+|     |                                  |        |     |            | 1         |            |
+|---------------------------------------------------------------------------------------------|
+| 1   | Intel(R) Graphics (RPL-S)        |        |     | 48050   MB | 8086      | 0          |
+|     |                                  |        |     |            | a780      | 868080a7.. |
+|     |                                  |        |     |            | 0         |            |
+|=============================================================================================|
+| OS: 22.04.5 LTS (Jammy Jellyfish) ubuntu, Version: 22.04.5, Kernel: 6.8.0-90-generic
+| Processor: 13th Gen Intel(R) Core(TM) i9-13900K
+| Bare Metal Cores: 24 | Bare Metal Logical Cores: 48
+| Available Cores:  32 
+|---------------------------------------------------------------------------------------------|
+| Total Memory (MB): 64067 | Free Memory: 11984
+| Total Page/Swap (MB): 2047 | Free Page/Swap: 0
+|---------------------------------------------------------------------------------------------|
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 767.81 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.43 
+
+   CPU     0 
+     0   1.17 
+2026-05-05T21:43:45Z [4,913ms] [Warning] [gpu.foundation.plugin] IOMMU is enabled.
+2026-05-05T21:43:45Z [4,913ms] [Warning] [gpu.foundation.plugin] Detected IOMMU is enabled. Running CUDA peer-to-peer bandwidth and latency validation.
+Unidirectional P2P=Enabled Bandwidth (P2P Writes) Matrix (GB/s)
+   D\D     0 
+     0 660.40 
+P2P=Enabled Latency (P2P Writes) Matrix (us)
+   GPU     0 
+     0   1.39 
+
+   CPU     0 
+     0   1.23 
+2026-05-05T21:43:45Z [5,124ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-05-05T21:43:45Z [5,124ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-05-05T21:43:45Z [5,137ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-05-05T21:43:45Z [5,137ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-05-05T21:43:45Z [5,143ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-05-05T21:43:45Z [5,143ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-05-05T21:43:45Z [5,149ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-05-05T21:43:45Z [5,149ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+2026-05-05T21:43:45Z [5,151ms] [Warning] [carb.windowing-glfw.plugin] GLFW initialization failed.
+2026-05-05T21:43:45Z [5,151ms] [Warning] [carb] Failed to startup plugin carb.windowing-glfw.plugin (interfaces: [carb::windowing::IGLContext v1.0],[carb::windowing::IWindowing v1.5]) (impl: carb.windowing-glfw.plugin)
+[INFO]: Base environment:
+	Environment device    : cuda:0
+	Environment seed      : 42
+	Physics step-size     : 0.002
+	Rendering step-size   : 0.02
+	Environment step-size : 0.02
+[INFO]: Time taken for scene creation : 5.027037 seconds
+[INFO]: Scene manager:  <class InteractiveScene>
+	Number of environments: 4096
+	Environment spacing   : 2.0
+	Source prim name      : /World/envs/env_0
+	Global prim paths     : []
+	Replicate physics     : True
+[INFO]: Starting the simulation. This may take a few seconds. Please wait...
+[INFO]: Time taken for simulation start : 3.327015 seconds
+[INFO] Command Manager:  <CommandManager> contains 1 active terms.
++------------------------------------------------+
+|              Active Command Terms              |
++-------+---------------+------------------------+
+| Index | Name          |          Type          |
++-------+---------------+------------------------+
+|   0   | base_velocity | UniformVelocityCommand |
++-------+---------------+------------------------+
+
+[INFO] Event Manager:  <EventManager> contains 1 active terms.
++-----------------------------------+
+| Active Event Terms in Mode: 'reset' |
++-----------+-----------------------+
+|   Index   | Name                  |
++-----------+-----------------------+
+|     0     | reset_base            |
+|     1     | reset_joints          |
++-----------+-----------------------+
+
+[INFO] Recorder Manager:  <RecorderManager> contains 0 active terms.
++---------------------+
+| Active Recorder Terms |
++-----------+---------+
+|   Index   | Name    |
++-----------+---------+
++-----------+---------+
+
+[INFO] Action Manager:  <ActionManager> contains 1 active terms.
++------------------------------------+
+|  Active Action Terms (shape: 20)   |
++--------+-------------+-------------+
+| Index  | Name        |   Dimension |
++--------+-------------+-------------+
+|   0    | joint_pos   |          20 |
++--------+-------------+-------------+
+
+[INFO] Observation Manager: <ObservationManager> contains 1 groups.
++---------------------------------------------------------+
+| Active Observation Terms in Group: 'policy' (shape: (73,)) |
++-----------+---------------------------------+-----------+
+|   Index   | Name                            |   Shape   |
++-----------+---------------------------------+-----------+
+|     0     | projected_gravity               |    (3,)   |
+|     1     | base_ang_vel                    |    (3,)   |
+|     2     | command                         |    (3,)   |
+|     3     | dof_pos                         |   (22,)   |
+|     4     | dof_vel                         |   (22,)   |
+|     5     | actions                         |   (20,)   |
++-----------+---------------------------------+-----------+
+
+[INFO] Termination Manager:  <TerminationManager> contains 2 active terms.
++-------------------------------------+
+|       Active Termination Terms      |
++-------+------------------+----------+
+| Index | Name             | Time Out |
++-------+------------------+----------+
+|   0   | time_out         |   True   |
+|   1   | terminate_height |  False   |
++-------+------------------+----------+
+
+[INFO] Reward Manager:  <RewardManager> contains 18 active terms.
++------------------------------------+
+|        Active Reward Terms         |
++-------+------------------+---------+
+| Index | Name             |  Weight |
++-------+------------------+---------+
+|   0   | survival         |     0.1 |
+|   1   | track_lin_vel_xy |     5.0 |
+|   2   | track_ang_vel_z  |     1.0 |
+|   3   | step_length      |     0.8 |
+|   4   | foot_width       |     0.6 |
+|   5   | foot_clearance   |     0.3 |
+|   6   | no_backward      |    -6.0 |
+|   7   | base_height      |    -2.0 |
+|   8   | orientation      |    -3.5 |
+|   9   | lin_vel_z        |    -0.5 |
+|   10  | ang_vel_xy       |   -0.05 |
+|   11  | yaw_rate         |    -1.0 |
+|   12  | lateral_vel      |    -0.5 |
+|   13  | arm_default      |    -0.8 |
+|   14  | arm_action       |   -0.02 |
+|   15  | torques          | -0.0001 |
+|   16  | action_rate      |  -0.012 |
+|   17  | dof_pos_limits   |    -0.2 |
++-------+------------------+---------+
+
+[INFO] Curriculum Manager:  <CurriculumManager> contains 0 active terms.
++----------------------+
+| Active Curriculum Terms |
++-----------+----------+
+|   Index   | Name     |
++-----------+----------+
++-----------+----------+
+
+[INFO]: Completed setting up the environment...
+--------------------------------------------------------------------------------
+Resolved observation sets: 
+	 policy :  ['policy']
+	 critic :  ['policy']
+--------------------------------------------------------------------------------
+Actor MLP: MLP(
+  (0): Linear(in_features=73, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=20, bias=True)
+)
+Critic MLP: MLP(
+  (0): Linear(in_features=73, out_features=512, bias=True)
+  (1): ELU(alpha=1.0)
+  (2): Linear(in_features=512, out_features=256, bias=True)
+  (3): ELU(alpha=1.0)
+  (4): Linear(in_features=256, out_features=128, bias=True)
+  (5): ELU(alpha=1.0)
+  (6): Linear(in_features=128, out_features=1, bias=True)
+)
+[33m16:43:54 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:43:59 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 0/3000 [0m                       
+
+                       Computation: 11432 steps/s (collection: 8.400s, learning 0.199s)
+             Mean action noise std: 1.00
+          Mean value_function loss: 0.0769
+               Mean surrogate loss: -0.0121
+                 Mean entropy loss: 28.3699
+                       Mean reward: 0.07
+               Mean episode length: 12.48
+           Episode_Reward/survival: 0.0013
+   Episode_Reward/track_lin_vel_xy: 0.0264
+    Episode_Reward/track_ang_vel_z: 0.0038
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0062
+     Episode_Reward/foot_clearance: 0.0000
+        Episode_Reward/no_backward: -0.0014
+        Episode_Reward/base_height: -0.0000
+        Episode_Reward/orientation: -0.0004
+          Episode_Reward/lin_vel_z: -0.0004
+         Episode_Reward/ang_vel_xy: -0.0016
+           Episode_Reward/yaw_rate: -0.0161
+        Episode_Reward/lateral_vel: -0.0000
+        Episode_Reward/arm_default: -0.0002
+         Episode_Reward/arm_action: -0.0038
+            Episode_Reward/torques: -0.0026
+        Episode_Reward/action_rate: -0.0057
+     Episode_Reward/dof_pos_limits: -0.0003
+Metrics/base_velocity/error_vel_xy: 0.0187
+Metrics/base_velocity/error_vel_yaw: 0.0344
+      Episode_Termination/time_out: 0.0149
+Episode_Termination/terminate_height: 0.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 98304
+                    Iteration time: 8.60s
+                      Time elapsed: 00:00:08
+                               ETA: 07:09:56
+
+Could not find git repository in /home/team2/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/rsl_rl/__init__.py. Skipping.
+Storing git diff for 'IsaacLab' in: /home/team2/IsaacLab/logs/rsl_rl/k1_fullbody_walk_bigstep_stable_v3/2026-05-05_16-43-45_bigstep_stable_v3/git/IsaacLab.diff
+[33m16:44:04 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:44:09 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 1/3000 [0m                       
+
+                       Computation: 12757 steps/s (collection: 7.612s, learning 0.094s)
+             Mean action noise std: 1.00
+          Mean value_function loss: 0.1816
+               Mean surrogate loss: -0.0089
+                 Mean entropy loss: 28.3468
+                       Mean reward: -0.09
+               Mean episode length: 47.87
+           Episode_Reward/survival: 0.0036
+   Episode_Reward/track_lin_vel_xy: 0.0935
+    Episode_Reward/track_ang_vel_z: 0.0098
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0177
+     Episode_Reward/foot_clearance: 0.0003
+        Episode_Reward/no_backward: -0.0014
+        Episode_Reward/base_height: -0.0002
+        Episode_Reward/orientation: -0.0183
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0081
+           Episode_Reward/yaw_rate: -0.0611
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0007
+         Episode_Reward/arm_action: -0.0115
+            Episode_Reward/torques: -0.0077
+        Episode_Reward/action_rate: -0.0174
+     Episode_Reward/dof_pos_limits: -0.0011
+Metrics/base_velocity/error_vel_xy: 0.0523
+Metrics/base_velocity/error_vel_yaw: 0.1211
+      Episode_Termination/time_out: 0.0366
+Episode_Termination/terminate_height: 0.1117
+--------------------------------------------------------------------------------
+                   Total timesteps: 196608
+                    Iteration time: 7.71s
+                      Time elapsed: 00:00:16
+                               ETA: 06:47:28
+
+[33m16:44:15 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 2/3000 [0m                       
+
+                       Computation: 12695 steps/s (collection: 7.645s, learning 0.098s)
+             Mean action noise std: 1.00
+          Mean value_function loss: 0.0732
+               Mean surrogate loss: -0.0105
+                 Mean entropy loss: 28.3335
+                       Mean reward: -0.08
+               Mean episode length: 56.74
+           Episode_Reward/survival: 0.0055
+   Episode_Reward/track_lin_vel_xy: 0.1367
+    Episode_Reward/track_ang_vel_z: 0.0159
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0267
+     Episode_Reward/foot_clearance: 0.0003
+        Episode_Reward/no_backward: -0.0018
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0306
+          Episode_Reward/lin_vel_z: -0.0009
+         Episode_Reward/ang_vel_xy: -0.0124
+           Episode_Reward/yaw_rate: -0.0821
+        Episode_Reward/lateral_vel: -0.0013
+        Episode_Reward/arm_default: -0.0010
+         Episode_Reward/arm_action: -0.0174
+            Episode_Reward/torques: -0.0115
+        Episode_Reward/action_rate: -0.0263
+     Episode_Reward/dof_pos_limits: -0.0018
+Metrics/base_velocity/error_vel_xy: 0.0836
+Metrics/base_velocity/error_vel_yaw: 0.1741
+      Episode_Termination/time_out: 0.0308
+Episode_Termination/terminate_height: 0.9070
+--------------------------------------------------------------------------------
+                   Total timesteps: 294912
+                    Iteration time: 7.74s
+                      Time elapsed: 00:00:24
+                               ETA: 06:40:31
+
+[33m16:44:20 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:44:25 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 3/3000 [0m                       
+
+                       Computation: 12786 steps/s (collection: 7.587s, learning 0.102s)
+             Mean action noise std: 1.00
+          Mean value_function loss: 0.1096
+               Mean surrogate loss: -0.0080
+                 Mean entropy loss: 28.3060
+                       Mean reward: 0.21
+               Mean episode length: 47.83
+           Episode_Reward/survival: 0.0045
+   Episode_Reward/track_lin_vel_xy: 0.1132
+    Episode_Reward/track_ang_vel_z: 0.0134
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0214
+     Episode_Reward/foot_clearance: 0.0003
+        Episode_Reward/no_backward: -0.0016
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0291
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0107
+           Episode_Reward/yaw_rate: -0.0600
+        Episode_Reward/lateral_vel: -0.0010
+        Episode_Reward/arm_default: -0.0009
+         Episode_Reward/arm_action: -0.0143
+            Episode_Reward/torques: -0.0094
+        Episode_Reward/action_rate: -0.0216
+     Episode_Reward/dof_pos_limits: -0.0014
+Metrics/base_velocity/error_vel_xy: 0.0690
+Metrics/base_velocity/error_vel_yaw: 0.1352
+      Episode_Termination/time_out: 0.0097
+Episode_Termination/terminate_height: 0.9895
+--------------------------------------------------------------------------------
+                   Total timesteps: 393216
+                    Iteration time: 7.69s
+                      Time elapsed: 00:00:31
+                               ETA: 06:36:18
+
+[33m16:44:30 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 4/3000 [0m                       
+
+                       Computation: 12758 steps/s (collection: 7.608s, learning 0.097s)
+             Mean action noise std: 0.99
+          Mean value_function loss: 0.0637
+               Mean surrogate loss: -0.0089
+                 Mean entropy loss: 28.2729
+                       Mean reward: 0.23
+               Mean episode length: 48.84
+           Episode_Reward/survival: 0.0050
+   Episode_Reward/track_lin_vel_xy: 0.1272
+    Episode_Reward/track_ang_vel_z: 0.0154
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0243
+     Episode_Reward/foot_clearance: 0.0003
+        Episode_Reward/no_backward: -0.0014
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0292
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0112
+           Episode_Reward/yaw_rate: -0.0614
+        Episode_Reward/lateral_vel: -0.0009
+        Episode_Reward/arm_default: -0.0010
+         Episode_Reward/arm_action: -0.0157
+            Episode_Reward/torques: -0.0103
+        Episode_Reward/action_rate: -0.0239
+     Episode_Reward/dof_pos_limits: -0.0016
+Metrics/base_velocity/error_vel_xy: 0.0757
+Metrics/base_velocity/error_vel_yaw: 0.1444
+      Episode_Termination/time_out: 0.0004
+Episode_Termination/terminate_height: 0.9996
+--------------------------------------------------------------------------------
+                   Total timesteps: 491520
+                    Iteration time: 7.71s
+                      Time elapsed: 00:00:39
+                               ETA: 06:33:53
+
+[33m16:44:35 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:44:40 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 5/3000 [0m                       
+
+                       Computation: 12713 steps/s (collection: 7.633s, learning 0.100s)
+             Mean action noise std: 0.99
+          Mean value_function loss: 0.0642
+               Mean surrogate loss: -0.0082
+                 Mean entropy loss: 28.2274
+                       Mean reward: 0.55
+               Mean episode length: 46.88
+           Episode_Reward/survival: 0.0044
+   Episode_Reward/track_lin_vel_xy: 0.1137
+    Episode_Reward/track_ang_vel_z: 0.0144
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0216
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0013
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0281
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0100
+           Episode_Reward/yaw_rate: -0.0481
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0009
+         Episode_Reward/arm_action: -0.0139
+            Episode_Reward/torques: -0.0090
+        Episode_Reward/action_rate: -0.0211
+     Episode_Reward/dof_pos_limits: -0.0013
+Metrics/base_velocity/error_vel_xy: 0.0663
+Metrics/base_velocity/error_vel_yaw: 0.1198
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 589824
+                    Iteration time: 7.73s
+                      Time elapsed: 00:00:47
+                               ETA: 06:32:27
+
+[33m16:44:46 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 6/3000 [0m                       
+
+                       Computation: 12824 steps/s (collection: 7.565s, learning 0.100s)
+             Mean action noise std: 0.99
+          Mean value_function loss: 0.0503
+               Mean surrogate loss: -0.0102
+                 Mean entropy loss: 28.1596
+                       Mean reward: 0.48
+               Mean episode length: 44.63
+           Episode_Reward/survival: 0.0049
+   Episode_Reward/track_lin_vel_xy: 0.1267
+    Episode_Reward/track_ang_vel_z: 0.0165
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0238
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0014
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0278
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0103
+           Episode_Reward/yaw_rate: -0.0490
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0010
+         Episode_Reward/arm_action: -0.0155
+            Episode_Reward/torques: -0.0099
+        Episode_Reward/action_rate: -0.0234
+     Episode_Reward/dof_pos_limits: -0.0015
+Metrics/base_velocity/error_vel_xy: 0.0725
+Metrics/base_velocity/error_vel_yaw: 0.1272
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 688128
+                    Iteration time: 7.67s
+                      Time elapsed: 00:00:54
+                               ETA: 06:30:55
+
+[33m16:44:51 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:44:56 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 7/3000 [0m                       
+
+                       Computation: 12758 steps/s (collection: 7.604s, learning 0.101s)
+             Mean action noise std: 0.98
+          Mean value_function loss: 0.0401
+               Mean surrogate loss: -0.0116
+                 Mean entropy loss: 28.0962
+                       Mean reward: 0.79
+               Mean episode length: 48.35
+           Episode_Reward/survival: 0.0046
+   Episode_Reward/track_lin_vel_xy: 0.1191
+    Episode_Reward/track_ang_vel_z: 0.0159
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0226
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0014
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0270
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0097
+           Episode_Reward/yaw_rate: -0.0417
+        Episode_Reward/lateral_vel: -0.0006
+        Episode_Reward/arm_default: -0.0009
+         Episode_Reward/arm_action: -0.0143
+            Episode_Reward/torques: -0.0092
+        Episode_Reward/action_rate: -0.0217
+     Episode_Reward/dof_pos_limits: -0.0014
+Metrics/base_velocity/error_vel_xy: 0.0674
+Metrics/base_velocity/error_vel_yaw: 0.1134
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 786432
+                    Iteration time: 7.70s
+                      Time elapsed: 00:01:02
+                               ETA: 06:29:59
+
+[33m16:45:01 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 8/3000 [0m                       
+
+                       Computation: 12799 steps/s (collection: 7.575s, learning 0.105s)
+             Mean action noise std: 0.98
+          Mean value_function loss: 0.0417
+               Mean surrogate loss: -0.0107
+                 Mean entropy loss: 28.0117
+                       Mean reward: 0.85
+               Mean episode length: 45.29
+           Episode_Reward/survival: 0.0049
+   Episode_Reward/track_lin_vel_xy: 0.1272
+    Episode_Reward/track_ang_vel_z: 0.0175
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0243
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0014
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0266
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0099
+           Episode_Reward/yaw_rate: -0.0420
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0010
+         Episode_Reward/arm_action: -0.0152
+            Episode_Reward/torques: -0.0098
+        Episode_Reward/action_rate: -0.0231
+     Episode_Reward/dof_pos_limits: -0.0015
+Metrics/base_velocity/error_vel_xy: 0.0717
+Metrics/base_velocity/error_vel_yaw: 0.1174
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 884736
+                    Iteration time: 7.68s
+                      Time elapsed: 00:01:10
+                               ETA: 06:29:05
+
+[33m16:45:06 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:45:11 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 9/3000 [0m                       
+
+                       Computation: 12785 steps/s (collection: 7.590s, learning 0.098s)
+             Mean action noise std: 0.98
+          Mean value_function loss: 0.0378
+               Mean surrogate loss: -0.0114
+                 Mean entropy loss: 27.9289
+                       Mean reward: 1.17
+               Mean episode length: 49.90
+           Episode_Reward/survival: 0.0047
+   Episode_Reward/track_lin_vel_xy: 0.1247
+    Episode_Reward/track_ang_vel_z: 0.0177
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0236
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0013
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0258
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0094
+           Episode_Reward/yaw_rate: -0.0367
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0009
+         Episode_Reward/arm_action: -0.0146
+            Episode_Reward/torques: -0.0093
+        Episode_Reward/action_rate: -0.0223
+     Episode_Reward/dof_pos_limits: -0.0014
+Metrics/base_velocity/error_vel_xy: 0.0689
+Metrics/base_velocity/error_vel_yaw: 0.1082
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 983040
+                    Iteration time: 7.69s
+                      Time elapsed: 00:01:17
+                               ETA: 06:28:23
+
+[33m16:45:16 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 10/3000 [0m                      
+
+                       Computation: 12679 steps/s (collection: 7.647s, learning 0.107s)
+             Mean action noise std: 0.97
+          Mean value_function loss: 0.0388
+               Mean surrogate loss: -0.0090
+                 Mean entropy loss: 27.8362
+                       Mean reward: 1.16
+               Mean episode length: 49.23
+           Episode_Reward/survival: 0.0051
+   Episode_Reward/track_lin_vel_xy: 0.1339
+    Episode_Reward/track_ang_vel_z: 0.0196
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0255
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0013
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0256
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0096
+           Episode_Reward/yaw_rate: -0.0365
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0010
+         Episode_Reward/arm_action: -0.0157
+            Episode_Reward/torques: -0.0099
+        Episode_Reward/action_rate: -0.0238
+     Episode_Reward/dof_pos_limits: -0.0015
+Metrics/base_velocity/error_vel_xy: 0.0736
+Metrics/base_velocity/error_vel_yaw: 0.1119
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1081344
+                    Iteration time: 7.75s
+                      Time elapsed: 00:01:25
+                               ETA: 06:28:05
+
+[33m16:45:22 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:45:27 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 11/3000 [0m                      
+
+                       Computation: 12737 steps/s (collection: 7.617s, learning 0.101s)
+             Mean action noise std: 0.97
+          Mean value_function loss: 0.0377
+               Mean surrogate loss: -0.0097
+                 Mean entropy loss: 27.7652
+                       Mean reward: 1.30
+               Mean episode length: 50.62
+           Episode_Reward/survival: 0.0049
+   Episode_Reward/track_lin_vel_xy: 0.1291
+    Episode_Reward/track_ang_vel_z: 0.0196
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0248
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0013
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0248
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0090
+           Episode_Reward/yaw_rate: -0.0324
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0010
+         Episode_Reward/arm_action: -0.0150
+            Episode_Reward/torques: -0.0095
+        Episode_Reward/action_rate: -0.0228
+     Episode_Reward/dof_pos_limits: -0.0015
+Metrics/base_velocity/error_vel_xy: 0.0711
+Metrics/base_velocity/error_vel_yaw: 0.1035
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1179648
+                    Iteration time: 7.72s
+                      Time elapsed: 00:01:33
+                               ETA: 06:27:40
+
+[33m16:45:32 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 12/3000 [0m                      
+
+                       Computation: 12719 steps/s (collection: 7.614s, learning 0.115s)
+             Mean action noise std: 0.97
+          Mean value_function loss: 0.0392
+               Mean surrogate loss: -0.0094
+                 Mean entropy loss: 27.6641
+                       Mean reward: 1.41
+               Mean episode length: 52.63
+           Episode_Reward/survival: 0.0053
+   Episode_Reward/track_lin_vel_xy: 0.1395
+    Episode_Reward/track_ang_vel_z: 0.0215
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0271
+     Episode_Reward/foot_clearance: 0.0001
+        Episode_Reward/no_backward: -0.0014
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0243
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0091
+           Episode_Reward/yaw_rate: -0.0340
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0011
+         Episode_Reward/arm_action: -0.0161
+            Episode_Reward/torques: -0.0101
+        Episode_Reward/action_rate: -0.0245
+     Episode_Reward/dof_pos_limits: -0.0016
+Metrics/base_velocity/error_vel_xy: 0.0763
+Metrics/base_velocity/error_vel_yaw: 0.1100
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1277952
+                    Iteration time: 7.73s
+                      Time elapsed: 00:01:41
+                               ETA: 06:27:20
+
+[33m16:45:37 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:45:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 13/3000 [0m                      
+
+                       Computation: 12759 steps/s (collection: 7.607s, learning 0.097s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0465
+               Mean surrogate loss: -0.0069
+                 Mean entropy loss: 27.6066
+                       Mean reward: 1.61
+               Mean episode length: 53.32
+           Episode_Reward/survival: 0.0051
+   Episode_Reward/track_lin_vel_xy: 0.1367
+    Episode_Reward/track_ang_vel_z: 0.0213
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0265
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0015
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0235
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0087
+           Episode_Reward/yaw_rate: -0.0313
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0011
+         Episode_Reward/arm_action: -0.0155
+            Episode_Reward/torques: -0.0098
+        Episode_Reward/action_rate: -0.0237
+     Episode_Reward/dof_pos_limits: -0.0015
+Metrics/base_velocity/error_vel_xy: 0.0737
+Metrics/base_velocity/error_vel_yaw: 0.1044
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1376256
+                    Iteration time: 7.70s
+                      Time elapsed: 00:01:48
+                               ETA: 06:26:56
+
+[33m16:45:48 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 14/3000 [0m                      
+
+                       Computation: 12811 steps/s (collection: 7.572s, learning 0.101s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0486
+               Mean surrogate loss: -0.0066
+                 Mean entropy loss: 27.5521
+                       Mean reward: 1.77
+               Mean episode length: 55.68
+           Episode_Reward/survival: 0.0055
+   Episode_Reward/track_lin_vel_xy: 0.1474
+    Episode_Reward/track_ang_vel_z: 0.0232
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0286
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0016
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0231
+          Episode_Reward/lin_vel_z: -0.0006
+         Episode_Reward/ang_vel_xy: -0.0089
+           Episode_Reward/yaw_rate: -0.0319
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0012
+         Episode_Reward/arm_action: -0.0164
+            Episode_Reward/torques: -0.0104
+        Episode_Reward/action_rate: -0.0252
+     Episode_Reward/dof_pos_limits: -0.0017
+Metrics/base_velocity/error_vel_xy: 0.0779
+Metrics/base_velocity/error_vel_yaw: 0.1090
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1474560
+                    Iteration time: 7.67s
+                      Time elapsed: 00:01:56
+                               ETA: 06:26:29
+
+[33m16:45:53 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:45:58 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 15/3000 [0m                      
+
+                       Computation: 12806 steps/s (collection: 7.577s, learning 0.099s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0531
+               Mean surrogate loss: -0.0074
+                 Mean entropy loss: 27.5060
+                       Mean reward: 1.67
+               Mean episode length: 56.68
+           Episode_Reward/survival: 0.0055
+   Episode_Reward/track_lin_vel_xy: 0.1480
+    Episode_Reward/track_ang_vel_z: 0.0238
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0288
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0018
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0229
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0311
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0012
+         Episode_Reward/arm_action: -0.0165
+            Episode_Reward/torques: -0.0104
+        Episode_Reward/action_rate: -0.0253
+     Episode_Reward/dof_pos_limits: -0.0017
+Metrics/base_velocity/error_vel_xy: 0.0788
+Metrics/base_velocity/error_vel_yaw: 0.1078
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1572864
+                    Iteration time: 7.68s
+                      Time elapsed: 00:02:04
+                               ETA: 06:26:04
+
+[33m16:46:03 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 16/3000 [0m                      
+
+                       Computation: 12640 steps/s (collection: 7.671s, learning 0.106s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0626
+               Mean surrogate loss: -0.0069
+                 Mean entropy loss: 27.4795
+                       Mean reward: 1.94
+               Mean episode length: 61.37
+           Episode_Reward/survival: 0.0058
+   Episode_Reward/track_lin_vel_xy: 0.1538
+    Episode_Reward/track_ang_vel_z: 0.0251
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0303
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0022
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0227
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0317
+        Episode_Reward/lateral_vel: -0.0009
+        Episode_Reward/arm_default: -0.0012
+         Episode_Reward/arm_action: -0.0172
+            Episode_Reward/torques: -0.0108
+        Episode_Reward/action_rate: -0.0263
+     Episode_Reward/dof_pos_limits: -0.0018
+Metrics/base_velocity/error_vel_xy: 0.0826
+Metrics/base_velocity/error_vel_yaw: 0.1115
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1671168
+                    Iteration time: 7.78s
+                      Time elapsed: 00:02:11
+                               ETA: 06:25:59
+
+[33m16:46:08 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:46:13 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 17/3000 [0m                      
+
+                       Computation: 12487 steps/s (collection: 7.768s, learning 0.104s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0735
+               Mean surrogate loss: -0.0064
+                 Mean entropy loss: 27.4555
+                       Mean reward: 1.67
+               Mean episode length: 60.49
+           Episode_Reward/survival: 0.0060
+   Episode_Reward/track_lin_vel_xy: 0.1577
+    Episode_Reward/track_ang_vel_z: 0.0264
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0316
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0044
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0224
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0324
+        Episode_Reward/lateral_vel: -0.0010
+        Episode_Reward/arm_default: -0.0013
+         Episode_Reward/arm_action: -0.0179
+            Episode_Reward/torques: -0.0113
+        Episode_Reward/action_rate: -0.0275
+     Episode_Reward/dof_pos_limits: -0.0019
+Metrics/base_velocity/error_vel_xy: 0.0878
+Metrics/base_velocity/error_vel_yaw: 0.1150
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1769472
+                    Iteration time: 7.87s
+                      Time elapsed: 00:02:19
+                               ETA: 06:26:10
+
+[33m16:46:18 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 18/3000 [0m                      
+
+                       Computation: 12534 steps/s (collection: 7.739s, learning 0.103s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0780
+               Mean surrogate loss: -0.0068
+                 Mean entropy loss: 27.4448
+                       Mean reward: 1.96
+               Mean episode length: 60.83
+           Episode_Reward/survival: 0.0060
+   Episode_Reward/track_lin_vel_xy: 0.1600
+    Episode_Reward/track_ang_vel_z: 0.0268
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0319
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0036
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0219
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0086
+           Episode_Reward/yaw_rate: -0.0317
+        Episode_Reward/lateral_vel: -0.0010
+        Episode_Reward/arm_default: -0.0013
+         Episode_Reward/arm_action: -0.0180
+            Episode_Reward/torques: -0.0112
+        Episode_Reward/action_rate: -0.0277
+     Episode_Reward/dof_pos_limits: -0.0019
+Metrics/base_velocity/error_vel_xy: 0.0870
+Metrics/base_velocity/error_vel_yaw: 0.1139
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1867776
+                    Iteration time: 7.84s
+                      Time elapsed: 00:02:27
+                               ETA: 06:26:14
+
+[33m16:46:24 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:46:29 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 19/3000 [0m                      
+
+                       Computation: 12628 steps/s (collection: 7.685s, learning 0.100s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.1015
+               Mean surrogate loss: -0.0043
+                 Mean entropy loss: 27.4400
+                       Mean reward: 1.66
+               Mean episode length: 65.06
+           Episode_Reward/survival: 0.0064
+   Episode_Reward/track_lin_vel_xy: 0.1653
+    Episode_Reward/track_ang_vel_z: 0.0283
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0338
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0068
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0222
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0334
+        Episode_Reward/lateral_vel: -0.0011
+        Episode_Reward/arm_default: -0.0014
+         Episode_Reward/arm_action: -0.0189
+            Episode_Reward/torques: -0.0119
+        Episode_Reward/action_rate: -0.0291
+     Episode_Reward/dof_pos_limits: -0.0020
+Metrics/base_velocity/error_vel_xy: 0.0941
+Metrics/base_velocity/error_vel_yaw: 0.1200
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 1966080
+                    Iteration time: 7.78s
+                      Time elapsed: 00:02:35
+                               ETA: 06:26:08
+
+[33m16:46:34 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 20/3000 [0m                      
+
+                       Computation: 12662 steps/s (collection: 7.662s, learning 0.101s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.1213
+               Mean surrogate loss: -0.0037
+                 Mean entropy loss: 27.4333
+                       Mean reward: 1.76
+               Mean episode length: 63.15
+           Episode_Reward/survival: 0.0063
+   Episode_Reward/track_lin_vel_xy: 0.1609
+    Episode_Reward/track_ang_vel_z: 0.0280
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0336
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0091
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0220
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0336
+        Episode_Reward/lateral_vel: -0.0012
+        Episode_Reward/arm_default: -0.0014
+         Episode_Reward/arm_action: -0.0188
+            Episode_Reward/torques: -0.0119
+        Episode_Reward/action_rate: -0.0290
+     Episode_Reward/dof_pos_limits: -0.0020
+Metrics/base_velocity/error_vel_xy: 0.0960
+Metrics/base_velocity/error_vel_yaw: 0.1199
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2064384
+                    Iteration time: 7.76s
+                      Time elapsed: 00:02:43
+                               ETA: 06:25:59
+
+[33m16:46:39 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:46:44 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 21/3000 [0m                      
+
+                       Computation: 12691 steps/s (collection: 7.643s, learning 0.102s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.1194
+               Mean surrogate loss: -0.0068
+                 Mean entropy loss: 27.4341
+                       Mean reward: 1.87
+               Mean episode length: 68.08
+           Episode_Reward/survival: 0.0066
+   Episode_Reward/track_lin_vel_xy: 0.1682
+    Episode_Reward/track_ang_vel_z: 0.0296
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0353
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0096
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0221
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0349
+        Episode_Reward/lateral_vel: -0.0012
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0198
+            Episode_Reward/torques: -0.0124
+        Episode_Reward/action_rate: -0.0305
+     Episode_Reward/dof_pos_limits: -0.0021
+Metrics/base_velocity/error_vel_xy: 0.1005
+Metrics/base_velocity/error_vel_yaw: 0.1248
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2162688
+                    Iteration time: 7.75s
+                      Time elapsed: 00:02:50
+                               ETA: 06:25:48
+
+[33m16:46:49 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 22/3000 [0m                      
+
+                       Computation: 12823 steps/s (collection: 7.571s, learning 0.095s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.1136
+               Mean surrogate loss: -0.0071
+                 Mean entropy loss: 27.4749
+                       Mean reward: 1.99
+               Mean episode length: 68.44
+           Episode_Reward/survival: 0.0068
+   Episode_Reward/track_lin_vel_xy: 0.1719
+    Episode_Reward/track_ang_vel_z: 0.0303
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0362
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0100
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0220
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0089
+           Episode_Reward/yaw_rate: -0.0349
+        Episode_Reward/lateral_vel: -0.0014
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0204
+            Episode_Reward/torques: -0.0126
+        Episode_Reward/action_rate: -0.0313
+     Episode_Reward/dof_pos_limits: -0.0022
+Metrics/base_velocity/error_vel_xy: 0.1023
+Metrics/base_velocity/error_vel_yaw: 0.1265
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2260992
+                    Iteration time: 7.67s
+                      Time elapsed: 00:02:58
+                               ETA: 06:25:27
+
+[33m16:46:54 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:47:00 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 23/3000 [0m                      
+
+                       Computation: 12845 steps/s (collection: 7.552s, learning 0.101s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.1125
+               Mean surrogate loss: -0.0076
+                 Mean entropy loss: 27.4828
+                       Mean reward: 1.76
+               Mean episode length: 71.22
+           Episode_Reward/survival: 0.0068
+   Episode_Reward/track_lin_vel_xy: 0.1690
+    Episode_Reward/track_ang_vel_z: 0.0307
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0364
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0110
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0219
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0347
+        Episode_Reward/lateral_vel: -0.0013
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0205
+            Episode_Reward/torques: -0.0126
+        Episode_Reward/action_rate: -0.0314
+     Episode_Reward/dof_pos_limits: -0.0022
+Metrics/base_velocity/error_vel_xy: 0.1045
+Metrics/base_velocity/error_vel_yaw: 0.1260
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2359296
+                    Iteration time: 7.65s
+                      Time elapsed: 00:03:06
+                               ETA: 06:25:05
+
+[33m16:47:05 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 24/3000 [0m                      
+
+                       Computation: 12706 steps/s (collection: 7.645s, learning 0.092s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.1019
+               Mean surrogate loss: -0.0077
+                 Mean entropy loss: 27.4815
+                       Mean reward: 2.12
+               Mean episode length: 67.72
+           Episode_Reward/survival: 0.0067
+   Episode_Reward/track_lin_vel_xy: 0.1704
+    Episode_Reward/track_ang_vel_z: 0.0307
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0360
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0102
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0214
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0087
+           Episode_Reward/yaw_rate: -0.0336
+        Episode_Reward/lateral_vel: -0.0014
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0203
+            Episode_Reward/torques: -0.0125
+        Episode_Reward/action_rate: -0.0313
+     Episode_Reward/dof_pos_limits: -0.0021
+Metrics/base_velocity/error_vel_xy: 0.1020
+Metrics/base_velocity/error_vel_yaw: 0.1233
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2457600
+                    Iteration time: 7.74s
+                      Time elapsed: 00:03:14
+                               ETA: 06:24:54
+
+[33m16:47:10 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:47:15 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 25/3000 [0m                      
+
+                       Computation: 12443 steps/s (collection: 7.797s, learning 0.103s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0890
+               Mean surrogate loss: -0.0086
+                 Mean entropy loss: 27.4727
+                       Mean reward: 2.42
+               Mean episode length: 70.41
+           Episode_Reward/survival: 0.0068
+   Episode_Reward/track_lin_vel_xy: 0.1789
+    Episode_Reward/track_ang_vel_z: 0.0313
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0367
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0085
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0212
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0088
+           Episode_Reward/yaw_rate: -0.0333
+        Episode_Reward/lateral_vel: -0.0014
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0206
+            Episode_Reward/torques: -0.0127
+        Episode_Reward/action_rate: -0.0318
+     Episode_Reward/dof_pos_limits: -0.0021
+Metrics/base_velocity/error_vel_xy: 0.1001
+Metrics/base_velocity/error_vel_yaw: 0.1241
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2555904
+                    Iteration time: 7.90s
+                      Time elapsed: 00:03:21
+                               ETA: 06:25:02
+
+[33m16:47:21 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 26/3000 [0m                      
+
+                       Computation: 12730 steps/s (collection: 7.623s, learning 0.099s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0781
+               Mean surrogate loss: -0.0082
+                 Mean entropy loss: 27.4671
+                       Mean reward: 2.48
+               Mean episode length: 64.75
+           Episode_Reward/survival: 0.0067
+   Episode_Reward/track_lin_vel_xy: 0.1777
+    Episode_Reward/track_ang_vel_z: 0.0312
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0364
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0084
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0207
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0087
+           Episode_Reward/yaw_rate: -0.0321
+        Episode_Reward/lateral_vel: -0.0013
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0204
+            Episode_Reward/torques: -0.0126
+        Episode_Reward/action_rate: -0.0315
+     Episode_Reward/dof_pos_limits: -0.0021
+Metrics/base_velocity/error_vel_xy: 0.0984
+Metrics/base_velocity/error_vel_yaw: 0.1211
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2654208
+                    Iteration time: 7.72s
+                      Time elapsed: 00:03:29
+                               ETA: 06:24:50
+
+[33m16:47:26 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:47:31 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 27/3000 [0m                      
+
+                       Computation: 12734 steps/s (collection: 7.623s, learning 0.096s)
+             Mean action noise std: 0.96
+          Mean value_function loss: 0.0700
+               Mean surrogate loss: -0.0080
+                 Mean entropy loss: 27.4273
+                       Mean reward: 2.31
+               Mean episode length: 65.79
+           Episode_Reward/survival: 0.0068
+   Episode_Reward/track_lin_vel_xy: 0.1795
+    Episode_Reward/track_ang_vel_z: 0.0318
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0364
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0080
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0204
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0085
+           Episode_Reward/yaw_rate: -0.0310
+        Episode_Reward/lateral_vel: -0.0012
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0206
+            Episode_Reward/torques: -0.0125
+        Episode_Reward/action_rate: -0.0317
+     Episode_Reward/dof_pos_limits: -0.0021
+Metrics/base_velocity/error_vel_xy: 0.0980
+Metrics/base_velocity/error_vel_yaw: 0.1193
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2752512
+                    Iteration time: 7.72s
+                      Time elapsed: 00:03:37
+                               ETA: 06:24:37
+
+[33m16:47:36 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 28/3000 [0m                      
+
+                       Computation: 12738 steps/s (collection: 7.614s, learning 0.103s)
+             Mean action noise std: 0.95
+          Mean value_function loss: 0.0636
+               Mean surrogate loss: -0.0091
+                 Mean entropy loss: 27.3673
+                       Mean reward: 2.34
+               Mean episode length: 65.80
+           Episode_Reward/survival: 0.0068
+   Episode_Reward/track_lin_vel_xy: 0.1830
+    Episode_Reward/track_ang_vel_z: 0.0318
+        Episode_Reward/step_length: 0.0001
+         Episode_Reward/foot_width: 0.0365
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0068
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0199
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0083
+           Episode_Reward/yaw_rate: -0.0309
+        Episode_Reward/lateral_vel: -0.0011
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0205
+            Episode_Reward/torques: -0.0124
+        Episode_Reward/action_rate: -0.0317
+     Episode_Reward/dof_pos_limits: -0.0020
+Metrics/base_velocity/error_vel_xy: 0.0956
+Metrics/base_velocity/error_vel_yaw: 0.1189
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2850816
+                    Iteration time: 7.72s
+                      Time elapsed: 00:03:45
+                               ETA: 06:24:25
+
+[33m16:47:42 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:47:47 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 29/3000 [0m                      
+
+                       Computation: 12648 steps/s (collection: 7.667s, learning 0.105s)
+             Mean action noise std: 0.95
+          Mean value_function loss: 0.0578
+               Mean surrogate loss: -0.0094
+                 Mean entropy loss: 27.2773
+                       Mean reward: 2.70
+               Mean episode length: 65.14
+           Episode_Reward/survival: 0.0067
+   Episode_Reward/track_lin_vel_xy: 0.1876
+    Episode_Reward/track_ang_vel_z: 0.0319
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0361
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0055
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0193
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0081
+           Episode_Reward/yaw_rate: -0.0297
+        Episode_Reward/lateral_vel: -0.0010
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0204
+            Episode_Reward/torques: -0.0122
+        Episode_Reward/action_rate: -0.0313
+     Episode_Reward/dof_pos_limits: -0.0020
+Metrics/base_velocity/error_vel_xy: 0.0921
+Metrics/base_velocity/error_vel_yaw: 0.1165
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 2949120
+                    Iteration time: 7.77s
+                      Time elapsed: 00:03:52
+                               ETA: 06:24:18
+
+[33m16:47:52 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 30/3000 [0m                      
+
+                       Computation: 12710 steps/s (collection: 7.638s, learning 0.096s)
+             Mean action noise std: 0.95
+          Mean value_function loss: 0.0550
+               Mean surrogate loss: -0.0092
+                 Mean entropy loss: 27.2192
+                       Mean reward: 2.73
+               Mean episode length: 63.54
+           Episode_Reward/survival: 0.0066
+   Episode_Reward/track_lin_vel_xy: 0.1864
+    Episode_Reward/track_ang_vel_z: 0.0318
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0355
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0039
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0188
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0080
+           Episode_Reward/yaw_rate: -0.0280
+        Episode_Reward/lateral_vel: -0.0009
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0200
+            Episode_Reward/torques: -0.0120
+        Episode_Reward/action_rate: -0.0305
+     Episode_Reward/dof_pos_limits: -0.0019
+Metrics/base_velocity/error_vel_xy: 0.0887
+Metrics/base_velocity/error_vel_yaw: 0.1119
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3047424
+                    Iteration time: 7.73s
+                      Time elapsed: 00:04:00
+                               ETA: 06:24:08
+
+[33m16:47:57 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:48:02 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 31/3000 [0m                      
+
+                       Computation: 12664 steps/s (collection: 7.660s, learning 0.103s)
+             Mean action noise std: 0.95
+          Mean value_function loss: 0.0507
+               Mean surrogate loss: -0.0093
+                 Mean entropy loss: 27.1532
+                       Mean reward: 2.90
+               Mean episode length: 65.27
+           Episode_Reward/survival: 0.0067
+   Episode_Reward/track_lin_vel_xy: 0.1918
+    Episode_Reward/track_ang_vel_z: 0.0326
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0364
+     Episode_Reward/foot_clearance: 0.0001
+        Episode_Reward/no_backward: -0.0039
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0186
+          Episode_Reward/lin_vel_z: -0.0007
+         Episode_Reward/ang_vel_xy: -0.0080
+           Episode_Reward/yaw_rate: -0.0284
+        Episode_Reward/lateral_vel: -0.0009
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0203
+            Episode_Reward/torques: -0.0121
+        Episode_Reward/action_rate: -0.0310
+     Episode_Reward/dof_pos_limits: -0.0019
+Metrics/base_velocity/error_vel_xy: 0.0899
+Metrics/base_velocity/error_vel_yaw: 0.1137
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3145728
+                    Iteration time: 7.76s
+                      Time elapsed: 00:04:08
+                               ETA: 06:24:00
+
+[33m16:48:07 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 32/3000 [0m                      
+
+                       Computation: 12434 steps/s (collection: 7.800s, learning 0.106s)
+             Mean action noise std: 0.94
+          Mean value_function loss: 0.0516
+               Mean surrogate loss: -0.0090
+                 Mean entropy loss: 27.0918
+                       Mean reward: 2.95
+               Mean episode length: 69.43
+           Episode_Reward/survival: 0.0068
+   Episode_Reward/track_lin_vel_xy: 0.1930
+    Episode_Reward/track_ang_vel_z: 0.0329
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0367
+     Episode_Reward/foot_clearance: 0.0001
+        Episode_Reward/no_backward: -0.0032
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0183
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0080
+           Episode_Reward/yaw_rate: -0.0279
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0015
+         Episode_Reward/arm_action: -0.0204
+            Episode_Reward/torques: -0.0121
+        Episode_Reward/action_rate: -0.0311
+     Episode_Reward/dof_pos_limits: -0.0019
+Metrics/base_velocity/error_vel_xy: 0.0904
+Metrics/base_velocity/error_vel_yaw: 0.1133
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3244032
+                    Iteration time: 7.91s
+                      Time elapsed: 00:04:16
+                               ETA: 06:24:05
+
+[33m16:48:13 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:48:18 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 33/3000 [0m                      
+
+                       Computation: 12415 steps/s (collection: 7.809s, learning 0.109s)
+             Mean action noise std: 0.94
+          Mean value_function loss: 0.0532
+               Mean surrogate loss: -0.0093
+                 Mean entropy loss: 27.0432
+                       Mean reward: 3.12
+               Mean episode length: 72.06
+           Episode_Reward/survival: 0.0069
+   Episode_Reward/track_lin_vel_xy: 0.1957
+    Episode_Reward/track_ang_vel_z: 0.0337
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0373
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0030
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0181
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0080
+           Episode_Reward/yaw_rate: -0.0279
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0016
+         Episode_Reward/arm_action: -0.0207
+            Episode_Reward/torques: -0.0122
+        Episode_Reward/action_rate: -0.0316
+     Episode_Reward/dof_pos_limits: -0.0019
+Metrics/base_velocity/error_vel_xy: 0.0918
+Metrics/base_velocity/error_vel_yaw: 0.1143
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3342336
+                    Iteration time: 7.92s
+                      Time elapsed: 00:04:24
+                               ETA: 06:24:11
+
+[33m16:48:23 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 34/3000 [0m                      
+
+                       Computation: 12657 steps/s (collection: 7.666s, learning 0.101s)
+             Mean action noise std: 0.94
+          Mean value_function loss: 0.0541
+               Mean surrogate loss: -0.0094
+                 Mean entropy loss: 26.9743
+                       Mean reward: 3.08
+               Mean episode length: 71.68
+           Episode_Reward/survival: 0.0070
+   Episode_Reward/track_lin_vel_xy: 0.1994
+    Episode_Reward/track_ang_vel_z: 0.0346
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0381
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0034
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0179
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0079
+           Episode_Reward/yaw_rate: -0.0278
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0016
+         Episode_Reward/arm_action: -0.0210
+            Episode_Reward/torques: -0.0123
+        Episode_Reward/action_rate: -0.0319
+     Episode_Reward/dof_pos_limits: -0.0019
+Metrics/base_velocity/error_vel_xy: 0.0935
+Metrics/base_velocity/error_vel_yaw: 0.1155
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3440640
+                    Iteration time: 7.77s
+                      Time elapsed: 00:04:31
+                               ETA: 06:24:03
+
+[33m16:48:28 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:48:33 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 35/3000 [0m                      
+
+                       Computation: 12435 steps/s (collection: 7.805s, learning 0.100s)
+             Mean action noise std: 0.94
+          Mean value_function loss: 0.0507
+               Mean surrogate loss: -0.0088
+                 Mean entropy loss: 26.9198
+                       Mean reward: 3.16
+               Mean episode length: 73.16
+           Episode_Reward/survival: 0.0073
+   Episode_Reward/track_lin_vel_xy: 0.2082
+    Episode_Reward/track_ang_vel_z: 0.0366
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0401
+     Episode_Reward/foot_clearance: 0.0001
+        Episode_Reward/no_backward: -0.0035
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0178
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0081
+           Episode_Reward/yaw_rate: -0.0287
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0017
+         Episode_Reward/arm_action: -0.0219
+            Episode_Reward/torques: -0.0128
+        Episode_Reward/action_rate: -0.0332
+     Episode_Reward/dof_pos_limits: -0.0020
+Metrics/base_velocity/error_vel_xy: 0.0979
+Metrics/base_velocity/error_vel_yaw: 0.1197
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3538944
+                    Iteration time: 7.91s
+                      Time elapsed: 00:04:39
+                               ETA: 06:24:07
+
+[33m16:48:38 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 36/3000 [0m                      
+
+                       Computation: 12502 steps/s (collection: 7.762s, learning 0.101s)
+             Mean action noise std: 0.93
+          Mean value_function loss: 0.0530
+               Mean surrogate loss: -0.0091
+                 Mean entropy loss: 26.8472
+                       Mean reward: 3.49
+               Mean episode length: 75.97
+           Episode_Reward/survival: 0.0075
+   Episode_Reward/track_lin_vel_xy: 0.2138
+    Episode_Reward/track_ang_vel_z: 0.0373
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0412
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0025
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0174
+          Episode_Reward/lin_vel_z: -0.0008
+         Episode_Reward/ang_vel_xy: -0.0080
+           Episode_Reward/yaw_rate: -0.0291
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0017
+         Episode_Reward/arm_action: -0.0223
+            Episode_Reward/torques: -0.0130
+        Episode_Reward/action_rate: -0.0338
+     Episode_Reward/dof_pos_limits: -0.0021
+Metrics/base_velocity/error_vel_xy: 0.0986
+Metrics/base_velocity/error_vel_yaw: 0.1219
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3637248
+                    Iteration time: 7.86s
+                      Time elapsed: 00:04:47
+                               ETA: 06:24:06
+
+[33m16:48:44 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:48:49 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 37/3000 [0m                      
+
+                       Computation: 12733 steps/s (collection: 7.633s, learning 0.088s)
+             Mean action noise std: 0.93
+          Mean value_function loss: 0.0499
+               Mean surrogate loss: -0.0081
+                 Mean entropy loss: 26.7881
+                       Mean reward: 3.62
+               Mean episode length: 77.37
+           Episode_Reward/survival: 0.0076
+   Episode_Reward/track_lin_vel_xy: 0.2165
+    Episode_Reward/track_ang_vel_z: 0.0384
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0419
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0031
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0173
+          Episode_Reward/lin_vel_z: -0.0009
+         Episode_Reward/ang_vel_xy: -0.0081
+           Episode_Reward/yaw_rate: -0.0291
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0018
+         Episode_Reward/arm_action: -0.0226
+            Episode_Reward/torques: -0.0132
+        Episode_Reward/action_rate: -0.0343
+     Episode_Reward/dof_pos_limits: -0.0021
+Metrics/base_velocity/error_vel_xy: 0.1012
+Metrics/base_velocity/error_vel_yaw: 0.1229
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3735552
+                    Iteration time: 7.72s
+                      Time elapsed: 00:04:55
+                               ETA: 06:23:54
+
+[33m16:48:54 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 38/3000 [0m                      
+
+                       Computation: 12806 steps/s (collection: 7.577s, learning 0.099s)
+             Mean action noise std: 0.93
+          Mean value_function loss: 0.0538
+               Mean surrogate loss: -0.0092
+                 Mean entropy loss: 26.7135
+                       Mean reward: 3.66
+               Mean episode length: 77.37
+           Episode_Reward/survival: 0.0078
+   Episode_Reward/track_lin_vel_xy: 0.2221
+    Episode_Reward/track_ang_vel_z: 0.0395
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0432
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0019
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0166
+          Episode_Reward/lin_vel_z: -0.0009
+         Episode_Reward/ang_vel_xy: -0.0081
+           Episode_Reward/yaw_rate: -0.0290
+        Episode_Reward/lateral_vel: -0.0007
+        Episode_Reward/arm_default: -0.0018
+         Episode_Reward/arm_action: -0.0231
+            Episode_Reward/torques: -0.0134
+        Episode_Reward/action_rate: -0.0350
+     Episode_Reward/dof_pos_limits: -0.0022
+Metrics/base_velocity/error_vel_xy: 0.1029
+Metrics/base_velocity/error_vel_yaw: 0.1247
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3833856
+                    Iteration time: 7.68s
+                      Time elapsed: 00:05:03
+                               ETA: 06:23:39
+
+[33m16:48:59 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+[33m16:49:04 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
+################################################################################
+                      [1m Learning iteration 39/3000 [0m                      
+
+                       Computation: 12671 steps/s (collection: 7.659s, learning 0.099s)
+             Mean action noise std: 0.93
+          Mean value_function loss: 0.0547
+               Mean surrogate loss: -0.0080
+                 Mean entropy loss: 26.6496
+                       Mean reward: 3.99
+               Mean episode length: 83.51
+           Episode_Reward/survival: 0.0080
+   Episode_Reward/track_lin_vel_xy: 0.2307
+    Episode_Reward/track_ang_vel_z: 0.0409
+        Episode_Reward/step_length: 0.0000
+         Episode_Reward/foot_width: 0.0443
+     Episode_Reward/foot_clearance: 0.0002
+        Episode_Reward/no_backward: -0.0022
+        Episode_Reward/base_height: -0.0003
+        Episode_Reward/orientation: -0.0165
+          Episode_Reward/lin_vel_z: -0.0009
+         Episode_Reward/ang_vel_xy: -0.0081
+           Episode_Reward/yaw_rate: -0.0297
+        Episode_Reward/lateral_vel: -0.0008
+        Episode_Reward/arm_default: -0.0019
+         Episode_Reward/arm_action: -0.0236
+            Episode_Reward/torques: -0.0138
+        Episode_Reward/action_rate: -0.0357
+     Episode_Reward/dof_pos_limits: -0.0022
+Metrics/base_velocity/error_vel_xy: 0.1046
+Metrics/base_velocity/error_vel_yaw: 0.1275
+      Episode_Termination/time_out: 0.0000
+Episode_Termination/terminate_height: 1.0000
+--------------------------------------------------------------------------------
+                   Total timesteps: 3932160
+                    Iteration time: 7.76s
+                      Time elapsed: 00:05:10
+                               ETA: 06:23:30
+
+[33m16:49:10 [math.py] WARNING: The function 'quat_rotate_inverse' will be deprecated in favor of the faster method 'quat_apply_inverse'. Please use 'quat_apply_inverse' instead....[0m
