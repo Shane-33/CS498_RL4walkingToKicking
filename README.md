@@ -4,14 +4,14 @@ Team 2 final project repository for **CS 498 Robotics Team Project, Spring 2026*
 
 ## Project Summary
 
-This project investigates reinforcement learning for humanoid walking and soccer-style kicking using the Booster K1 humanoid robot in Isaac Lab / Isaac Sim, with MuJoCo-related simulation workflow placeholders included for final submission completeness. We trained and evaluated walking policies, adapted walking behavior toward kicking, analyzed policy failures, and documented staged training attempts, rollout videos, reward curves, screenshots, and final report materials.
+This project investigates reinforcement learning for humanoid walking and soccer-style kicking using the Booster K1 humanoid robot in Isaac Lab / Isaac Sim, with MuJoCo-related simulation workflow included for final submission completeness. We trained and evaluated walking policies, adapted walking behavior toward kicking, analyzed policy failures, and documented staged training attempts, rollout videos, reward curves, screenshots, and final report materials.
 
 ## Main Deliverables
 
 - Final write-up/report
 - Final presentation slides
 - Isaac Sim / Isaac Lab rollout videos
-- MuJoCo simulation placeholder folder
+- MuJoCo simulation folder
 - Selected code/configuration files
 - Training figures and logs
 - Screenshots/contact sheets
