@@ -28,7 +28,6 @@ This project investigates reinforcement learning for humanoid walking and soccer
 - `videos/`
   - `isaac_sim/`
   - `mujoco/`
-  - original rollout videos
 - `Screenshots/`
 - `final_report_assets/`
   - `figures/`
