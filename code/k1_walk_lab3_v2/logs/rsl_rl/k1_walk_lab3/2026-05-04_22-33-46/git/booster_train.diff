@@ -1,0 +1,132 @@
+--- git commit ---
+651b7a53f2ffaf2d5629d0604d065cc385e29c6b
+
+
+--- git status ---
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   scripts/rsl_rl/play.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	source/booster_train/booster_train/tasks/k1_lab2/
+	source/booster_train/booster_train/tasks/k1_walk_lab3/
+
+no changes added to commit (use "git add" and/or "git commit -a") 
+
+
+--- git diff ---
+diff --git a/scripts/rsl_rl/play.py b/scripts/rsl_rl/play.py
+index 147a624..6fff292 100644
+--- a/scripts/rsl_rl/play.py
++++ b/scripts/rsl_rl/play.py
+@@ -70,7 +70,7 @@ from isaaclab.envs import (
+ )
+ from isaaclab.utils.assets import retrieve_file_path
+ from isaaclab.utils.dict import print_dict
+-from isaaclab.utils.pretrained_checkpoint import get_published_pretrained_checkpoint
++# get_published_pretrained_checkpoint not available in this isaaclab version
+ 
+ from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper, export_policy_as_jit, export_policy_as_onnx
+ 
+@@ -102,10 +102,8 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
+     log_root_path = os.path.abspath(log_root_path)
+     print(f"[INFO] Loading experiment from directory: {log_root_path}")
+     if args_cli.use_pretrained_checkpoint:
+-        resume_path = get_published_pretrained_checkpoint("rsl_rl", train_task_name)
+-        if not resume_path:
+-            print("[INFO] Unfortunately a pre-trained checkpoint is currently unavailable for this task.")
+-            return
++        print("[INFO] --use_pretrained_checkpoint is not supported in this isaaclab version. Use --checkpoint instead.")
++        return
+     elif args_cli.checkpoint:
+         resume_path = retrieve_file_path(args_cli.checkpoint)
+     else:
+@@ -143,34 +141,32 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
+     # obtain the trained policy for inference
+     policy = ppo_runner.get_inference_policy(device=env.unwrapped.device)
+ 
+-    # extract the neural network module
+-    # we do this in a try-except to maintain backwards compatibility.
++    # extract the neural network module and export — skip if unsupported by this rsl-rl version
+     try:
+-        # version 2.3 onwards
+-        policy_nn = ppo_runner.alg.policy
+-    except AttributeError:
+-        # version 2.2 and below
+-        policy_nn = ppo_runner.alg.actor_critic
+-
+-    # extract the normalizer
+-    if hasattr(policy_nn, "actor_obs_normalizer"):
+-        normalizer = policy_nn.actor_obs_normalizer
+-    elif hasattr(policy_nn, "student_obs_normalizer"):
+-        normalizer = policy_nn.student_obs_normalizer
+-    elif hasattr(ppo_runner, "obs_normalizer"):     # compatibility for older versions
+-        normalizer = ppo_runner.obs_normalizer
+-    else:
+-        normalizer = None
+-
+-    # export policy to onnx/jit
+-    export_model_dir = os.path.join(os.path.dirname(resume_path), "exported")
+-    run_name = os.path.basename(log_dir)
+-    export_policy_as_jit(policy_nn, normalizer=normalizer, path=export_model_dir,
+-                         filename=f"{agent_cfg.experiment_name}_{run_name}.pt")
+-    export_policy_as_onnx(
+-        policy_nn, normalizer=normalizer, path=export_model_dir,
+-        filename=f"{agent_cfg.experiment_name}_{run_name}.onnx"
+-    )
++        try:
++            policy_nn = ppo_runner.alg.policy          # rsl-rl >= 2.3
++        except AttributeError:
++            policy_nn = ppo_runner.alg.actor_critic    # rsl-rl <= 2.2
++
++        if hasattr(policy_nn, "actor_obs_normalizer"):
++            normalizer = policy_nn.actor_obs_normalizer
++        elif hasattr(policy_nn, "student_obs_normalizer"):
++            normalizer = policy_nn.student_obs_normalizer
++        elif hasattr(ppo_runner, "obs_normalizer"):
++            normalizer = ppo_runner.obs_normalizer
++        else:
++            normalizer = None
++
++        export_model_dir = os.path.join(os.path.dirname(resume_path), "exported")
++        run_name = os.path.basename(log_dir)
++        export_policy_as_jit(policy_nn, normalizer=normalizer, path=export_model_dir,
++                             filename=f"{agent_cfg.experiment_name}_{run_name}.pt")
++        export_policy_as_onnx(
++            policy_nn, normalizer=normalizer, path=export_model_dir,
++            filename=f"{agent_cfg.experiment_name}_{run_name}.onnx"
++        )
++    except Exception as e:
++        print(f"[WARNING] Model export skipped (not supported by this rsl-rl version): {e}")
+ 
+     if args_cli.headless and not args_cli.video:
+         print("[INFO] Headless mode and no video recording. Exiting after model export.")
+@@ -183,10 +179,23 @@ def main(env_cfg: ManagerBasedRLEnvCfg | DirectRLEnvCfg | DirectMARLEnvCfg, agen
+     obs = env.get_observations()
+     if version("rsl-rl-lib").startswith("2.3."):
+         obs, _ = obs
++    
++    # Initialize keyboard teleop
++    from isaaclab.devices import Se2Keyboard, Se2KeyboardCfg
++    teleop_interface = Se2Keyboard(Se2KeyboardCfg())
++    print("[INFO] Keyboard teleop initialized. Use WASD or Arrow keys to move the robot.")
++
+     timestep = 0
+     # simulate environment
+     while simulation_app.is_running():
+         start_time = time.time()
++        
++        # Get keyboard command and update environment's command manager
++        external_cmd = teleop_interface.advance()
++        external_cmd = torch.tensor(external_cmd, device=env.unwrapped.device).repeat(env.unwrapped.num_envs, 1)
++        # Manually override the command in the environment
++        env.unwrapped.command_manager.get_term("base_velocity").command[:] = external_cmd
++
+         # run everything in inference mode
+         with torch.inference_mode():
+             # agent stepping
