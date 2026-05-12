@@ -22,6 +22,7 @@ This project investigates reinforcement learning for humanoid walking and soccer
 - `Doc&Slide/`
   - `CS498_Team2_Final_Report.pdf`
   - `robotics_final_presentation_k1_kicking.pptx`
+  - `individual_contribution_reports/`
 - `code/`
   - `isaac_lab/`
   - `mujoco/`
@@ -36,7 +37,6 @@ This project investigates reinforcement learning for humanoid walking and soccer
   - `k1_fullbody_walk_env_cfg.py`
   - `k1_fullbody_walk_agent_cfg.py`
 - `mujoco_simulation/`
-- `individual_contribution_reports/`
 
 ## Report and Slides
 
