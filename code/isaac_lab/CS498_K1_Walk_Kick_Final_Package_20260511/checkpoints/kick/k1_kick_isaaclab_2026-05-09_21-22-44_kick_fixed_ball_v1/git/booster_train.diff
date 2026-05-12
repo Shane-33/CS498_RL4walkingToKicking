@@ -1,0 +1,73 @@
+--- git status ---
+On branch main
+Your branch is behind 'origin/main' by 1 commit, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   scripts/rsl_rl/play.py
+	modified:   source/booster_train/booster_train/tasks/__init__.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	scripts/expand_walk_checkpoint.py
+	scripts/validate_kick_behavior.py
+	source/booster_train/booster_train/tasks/htwk_gym_k1_modified_backup_20260429_120351/
+	source/booster_train/booster_train/tasks/k1_fullbody_walk_isaaclab/
+	source/booster_train/booster_train/tasks/k1_kick_isaaclab/
+	source/booster_train/booster_train/tasks/k1_kick_team2/
+	source/booster_train/booster_train/tasks/k1_kick_team2_add1/
+	source/booster_train/booster_train/tasks/k1_parameter_walk_isaaclab/
+	source/booster_train/booster_train/tasks/k1_walk_team2_finetune_backup/
+
+no changes added to commit (use "git add" and/or "git commit -a") 
+
+
+--- git diff ---
+diff --git a/scripts/rsl_rl/play.py b/scripts/rsl_rl/play.py
+index 147a624..46e234b 100644
+--- a/scripts/rsl_rl/play.py
++++ b/scripts/rsl_rl/play.py
+@@ -70,7 +70,13 @@ from isaaclab.envs import (
+ )
+ from isaaclab.utils.assets import retrieve_file_path
+ from isaaclab.utils.dict import print_dict
+-from isaaclab.utils.pretrained_checkpoint import get_published_pretrained_checkpoint
++# from isaaclab.utils.pretrained_checkpoint import get_published_pretrained_checkpoint
++try:
++    from isaaclab.utils.pretrained_checkpoint import (
++        get_published_pretrained_checkpoint,
++    )
++except ImportError:
++    get_published_pretrained_checkpoint = None
+ 
+ from isaaclab_rl.rsl_rl import RslRlOnPolicyRunnerCfg, RslRlVecEnvWrapper, export_policy_as_jit, export_policy_as_onnx
+ 
+diff --git a/source/booster_train/booster_train/tasks/__init__.py b/source/booster_train/booster_train/tasks/__init__.py
+index 13df3c3..b77e5bc 100644
+--- a/source/booster_train/booster_train/tasks/__init__.py
++++ b/source/booster_train/booster_train/tasks/__init__.py
+@@ -15,3 +15,21 @@ from isaaclab_tasks.utils import import_packages
+ _BLACKLIST_PKGS = ["utils", ".mdp"]
+ # Import all configs in this package
+ import_packages(__name__, _BLACKLIST_PKGS)
++
++# Register K1 kick task.
++try:
++    from . import k1_kick_isaaclab
++except Exception as e:
++    print(f"[WARN] Failed to import k1_kick_isaaclab: {e}")
++
++# Register K1 full-body walk task.
++try:
++    from . import k1_fullbody_walk_isaaclab
++except Exception as e:
++    print(f"[WARN] Failed to import k1_fullbody_walk_isaaclab: {e}")
++
++#Updated k1_kick_task
++try:
++    from . import k1_kick_team2
++except Exception as e:
++    print(f"[WARN] Failed to import k1_kick_team2: {e}")
+\ No newline at end of file

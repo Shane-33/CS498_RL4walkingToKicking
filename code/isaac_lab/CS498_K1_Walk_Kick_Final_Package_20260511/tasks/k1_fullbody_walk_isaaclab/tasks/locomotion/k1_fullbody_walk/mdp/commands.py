@@ -1,0 +1,16 @@
+from __future__ import annotations
+
+import torch
+from isaaclab.envs import ManagerBasedRLEnv
+
+
+def constant_parameter_walk_commands(env: ManagerBasedRLEnv) -> torch.Tensor:
+    """HTWK source: envs/K1/parameter_walk.py _compute_observations.
+
+    Reproduces in-function overwrite:
+      self.commands = zeros(...); self.commands[:,0]=0.5
+    """
+    out = torch.zeros(env.num_envs, 10, device=env.device)
+    # Bootstrap command: keep slight forward intent but avoid large startup destabilization.
+    out[:, 0] = 0.05
+    return out

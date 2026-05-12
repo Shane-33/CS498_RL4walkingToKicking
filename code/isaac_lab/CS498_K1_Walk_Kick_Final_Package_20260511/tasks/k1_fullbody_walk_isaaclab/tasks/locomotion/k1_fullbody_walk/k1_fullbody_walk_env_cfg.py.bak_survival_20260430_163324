@@ -1,0 +1,234 @@
+
+"""
+K1 Full-Body Walk Task - 20 DoF (legs + arms).
+Based on best practices from:
+- Unitree H1/G1 IsaacLab locomotion
+- XBot-L full-body locomotion (Gu et al. 2024)
+- KSLC arm swing for yaw stability
+
+Key differences from 12-DoF task:
+1. Arms included in action space (20 DoF total)
+2. Arm default pos penalty keeps arms natural
+3. Yaw penalty moderate (not too strong)
+4. Lateral vel penalty moderate
+5. Random yaw reset for generalization
+"""
+from __future__ import annotations
+import torch
+from dataclasses import MISSING
+
+import isaaclab.sim as sim_utils
+from isaaclab.assets import ArticulationCfg, AssetBaseCfg
+from isaaclab.envs import ManagerBasedRLEnvCfg
+from isaaclab.managers import EventTermCfg as EventTerm
+from isaaclab.managers import ObservationGroupCfg as ObsGroup
+from isaaclab.managers import ObservationTermCfg as ObsTerm
+from isaaclab.managers import RewardTermCfg as RewTerm
+from isaaclab.managers import SceneEntityCfg
+from isaaclab.managers import TerminationTermCfg as DoneTerm
+from isaaclab.scene import InteractiveSceneCfg
+from isaaclab.sensors import ContactSensorCfg
+from isaaclab.utils import configclass
+import isaaclab.envs.mdp as mdp
+
+import sys
+sys.path.insert(0, "/home/team2/team2_project/booster_train/source/booster_train")
+from booster_train.tasks.k1_parameter_walk_isaaclab.tasks.locomotion.k1_parameter_walk.k1_param_walk_env_cfg import (
+    add_k1_foot_box_collisions,
+)
+from booster_train.tasks.k1_parameter_walk_isaaclab.tasks.locomotion.k1_parameter_walk.mdp import rewards as k1_rew
+from booster_train.tasks.k1_parameter_walk_isaaclab.tasks.locomotion.k1_parameter_walk.mdp import terminations as k1_done
+from booster_train.assets.robots.booster import BOOSTER_K1_CFG
+
+
+# ── Custom rewards ──
+
+def direct_forward_velocity_reward(env):
+    """Body-frame forward velocity reward."""
+    robot = env.scene["robot"]
+    vx = robot.data.root_lin_vel_b[:, 0]
+    return torch.clamp(vx, min=-0.5, max=1.5)
+
+def no_backward_velocity_penalty(env):
+    """Body-frame backward velocity penalty."""
+    robot = env.scene["robot"]
+    vx = robot.data.root_lin_vel_b[:, 0]
+    return torch.clamp(-vx, min=0.0, max=1.0)
+
+def yaw_rate_penalty(env):
+    """Penalize yaw rotation - keeps robot walking straight."""
+    robot = env.scene["robot"]
+    yaw_rate = robot.data.root_ang_vel_b[:, 2]
+    return torch.square(yaw_rate)
+
+def lateral_velocity_penalty(env):
+    """Penalize sideways movement."""
+    robot = env.scene["robot"]
+    vy = robot.data.root_lin_vel_b[:, 1]
+    return torch.square(vy)
+
+def arm_default_pos_penalty(env):
+    """Penalize arm joints deviating from default - arms hang naturally."""
+    robot = env.scene["robot"]
+    joint_pos = robot.data.joint_pos
+    joint_default = robot.data.default_joint_pos
+    joint_names = robot.joint_names
+    arm_indices = [
+        i for i, name in enumerate(joint_names)
+        if any(k in name for k in ["Shoulder", "Elbow"])
+    ]
+    if not arm_indices:
+        return torch.zeros(env.num_envs, device=env.device)
+    arm_pos = joint_pos[:, arm_indices]
+    arm_default = joint_default[:, arm_indices]
+    return torch.sum(torch.square(arm_pos - arm_default), dim=-1)
+
+def fixed_command(env):
+    """Fixed forward command: vx=0.5 m/s."""
+    cmd = torch.zeros((env.num_envs, 10), device=env.device)
+    cmd[:, 0] = 0.5
+    return cmd
+
+
+@configclass
+class K1FullBodySceneCfg(InteractiveSceneCfg):
+    terrain = AssetBaseCfg(
+        prim_path="/World/ground",
+        spawn=sim_utils.GroundPlaneCfg(),
+    )
+    dome_light = AssetBaseCfg(
+        prim_path="/World/Light",
+        spawn=sim_utils.DomeLightCfg(intensity=2000.0, color=(1.0, 1.0, 1.0)),
+    )
+    robot: ArticulationCfg = MISSING
+    contact_forces = ContactSensorCfg(
+        prim_path="{ENV_REGEX_NS}/Robot/.*", history_length=3, track_air_time=True
+    )
+
+
+@configclass
+class ActionsCfg:
+    """20 DoF: legs (12) + arms (8)."""
+    joint_pos = mdp.JointPositionActionCfg(
+        asset_name="robot",
+        joint_names=[
+            # Legs (12)
+            "Left_Hip_Pitch", "Left_Hip_Roll", "Left_Hip_Yaw", "Left_Knee_Pitch",
+            "Left_Ankle_Pitch", "Left_Ankle_Roll",
+            "Right_Hip_Pitch", "Right_Hip_Roll", "Right_Hip_Yaw", "Right_Knee_Pitch",
+            "Right_Ankle_Pitch", "Right_Ankle_Roll",
+            # Arms (8) - included so RL can learn natural arm posture
+            "Left_Shoulder_Pitch", "Left_Shoulder_Roll", "Left_Elbow_Pitch", "Left_Elbow_Yaw",
+            "Right_Shoulder_Pitch", "Right_Shoulder_Roll", "Right_Elbow_Pitch", "Right_Elbow_Yaw",
+        ],
+        scale=0.2,
+        preserve_order=True,
+        use_default_offset=False,
+        offset={
+            # Leg offsets (same as working 12-DoF task)
+            "Left_Hip_Pitch": -0.2, "Left_Hip_Roll": 0.0, "Left_Hip_Yaw": 0.0,
+            "Left_Knee_Pitch": 0.4, "Left_Ankle_Pitch": -0.25, "Left_Ankle_Roll": 0.0,
+            "Right_Hip_Pitch": -0.2, "Right_Hip_Roll": 0.0, "Right_Hip_Yaw": 0.0,
+            "Right_Knee_Pitch": 0.4, "Right_Ankle_Pitch": -0.25, "Right_Ankle_Roll": 0.0,
+            # Arm offsets: 0 = natural hanging position
+            "Left_Shoulder_Pitch": 0.0, "Left_Shoulder_Roll": 0.0,
+            "Left_Elbow_Pitch": 0.0, "Left_Elbow_Yaw": 0.0,
+            "Right_Shoulder_Pitch": 0.0, "Right_Shoulder_Roll": 0.0,
+            "Right_Elbow_Pitch": 0.0, "Right_Elbow_Yaw": 0.0,
+        },
+    )
+
+
+@configclass
+class ObservationsCfg:
+    @configclass
+    class PolicyCfg(ObsGroup):
+        projected_gravity = ObsTerm(func=mdp.projected_gravity)
+        base_ang_vel      = ObsTerm(func=mdp.base_ang_vel)
+        command           = ObsTerm(func=fixed_command)
+        dof_pos           = ObsTerm(func=mdp.joint_pos_rel)   # 20 dims
+        dof_vel           = ObsTerm(func=mdp.joint_vel_rel)   # 20 dims
+        actions           = ObsTerm(func=mdp.last_action)     # 20 dims
+        concatenate_terms = True
+        enable_corruption = False
+    policy: PolicyCfg = PolicyCfg()
+    # Total obs: 3+3+10+20+20+20 = 76 dims
+
+
+@configclass
+class EventCfg:
+    reset_base = EventTerm(
+        func=mdp.reset_root_state_uniform,
+        mode="reset",
+        params={
+            # Random yaw for generalization (restore after learning straight walk)
+            "pose_range": {"x": (-0.5, 0.5), "y": (-0.5, 0.5), "yaw": (0.0, 0.0)},
+            "velocity_range": {"x": (0.0, 0.0), "y": (0.0, 0.0), "z": (0.0, 0.0),
+                               "roll": (0.0, 0.0), "pitch": (0.0, 0.0), "yaw": (0.0, 0.0)},
+            "asset_cfg": SceneEntityCfg("robot"),
+        },
+    )
+    reset_joints = EventTerm(
+        func=mdp.reset_joints_by_offset,
+        mode="reset",
+        params={
+            "position_range": (-0.01, 0.01),
+            "velocity_range": (-0.01, 0.01),
+            "asset_cfg": SceneEntityCfg("robot"),
+        },
+    )
+
+
+@configclass
+class RewardsCfg:
+    # ── Core walking rewards ──
+    survival         = RewTerm(func=k1_rew.survival_reward,          weight=0.02)
+    direct_forward   = RewTerm(func=direct_forward_velocity_reward,   weight=15.0)
+    no_backward      = RewTerm(func=no_backward_velocity_penalty,     weight=-6.0)
+
+    # ── Stability ──
+    base_height      = RewTerm(func=k1_rew.base_height_reward,       weight=-2.0)
+    orientation      = RewTerm(func=k1_rew.orientation_penalty,      weight=-3.0)
+    lin_vel_z        = RewTerm(func=k1_rew.lin_vel_z_penalty,        weight=-0.5)
+    ang_vel_xy       = RewTerm(func=k1_rew.ang_vel_xy_penalty,       weight=-0.05)
+
+    # ── Straightness (moderate, not strong enough to stop walking) ──
+    yaw_rate         = RewTerm(func=yaw_rate_penalty,                weight=-1.0)
+    lateral_vel      = RewTerm(func=lateral_velocity_penalty,        weight=-0.5)
+
+    # ── Arm naturalness ──
+    arm_default      = RewTerm(func=arm_default_pos_penalty,         weight=-0.3)
+
+    # ── Efficiency ──
+    torques          = RewTerm(func=k1_rew.torque_penalty,           weight=-0.0001)
+    action_rate      = RewTerm(func=k1_rew.action_rate_penalty,      weight=-0.02)
+    dof_pos_limits   = RewTerm(func=mdp.joint_pos_limits,            weight=-0.2,
+                               params={"asset_cfg": SceneEntityCfg("robot")})
+
+
+@configclass
+class TerminationsCfg:
+    time_out         = DoneTerm(func=mdp.time_out, time_out=True)
+    terminate_height = DoneTerm(
+        func=k1_done.terminate_on_low_height,
+        params={"min_height": 0.35, "asset_cfg": SceneEntityCfg("robot")},
+    )
+
+
+@configclass
+class K1FullBodyWalkEnvCfg(ManagerBasedRLEnvCfg):
+    scene:        K1FullBodySceneCfg = K1FullBodySceneCfg(num_envs=64, env_spacing=2.0)
+    actions:      ActionsCfg         = ActionsCfg()
+    observations: ObservationsCfg    = ObservationsCfg()
+    events:       EventCfg           = EventCfg()
+    rewards:      RewardsCfg         = RewardsCfg()
+    terminations: TerminationsCfg    = TerminationsCfg()
+
+    def __post_init__(self):
+        self.decimation          = 10
+        self.episode_length_s    = 20.0
+        self.sim.dt              = 0.002
+        self.sim.render_interval = self.decimation
+        self.scene.robot = BOOSTER_K1_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+        self.scene.robot.init_state.pos = (0.0, 0.0, 0.578)
+        self.scene.robot.spawn.func = add_k1_foot_box_collisions
