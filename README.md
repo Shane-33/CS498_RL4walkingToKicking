@@ -2,9 +2,17 @@
 
 Team 2 final project repository for **CS 498 Robotics Team Project, Spring 2026**.
 
+This project investigates reinforcement learning for humanoid walking and soccer-style kicking using the Booster K1 humanoid robot in Isaac Lab / Isaac Sim.
+
+## System Overview
+
+![System overview of the Isaac Lab walking-to-kicking reinforcement learning pipeline](final_report_assets/figures/fig1.png)
+
+**Figure 1.** Overview of the Isaac Lab reinforcement learning pipeline for Booster K1 walking and soccer-style kicking. The policy receives velocity commands, proprioceptive states, gravity projection, previous actions, and ball-relative information, then outputs target joint offsets for full-body humanoid control. The simulation loop computes contacts, humanoid dynamics, ball dynamics, and reward terms used for PPO training.
+
 ## Project Summary
 
-This project investigates reinforcement learning for humanoid walking and soccer-style kicking using the Booster K1 humanoid robot in Isaac Lab / Isaac Sim. We trained and evaluated walking policies, adapted walking behavior toward kicking, analyzed policy failures, and documented staged training attempts, rollout videos, reward curves, screenshots, and final report materials.
+We trained and evaluated walking policies, adapted walking behavior toward kicking, analyzed policy failures, and documented staged training attempts, rollout videos, reward curves, screenshots, and final report materials.
 
 ## Main Deliverables
 
